@@ -1,0 +1,22 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public static class Utils
+{
+    public static Vector3 GetRandomSpawnPoin()
+    {
+        return new Vector3(Random.Range(-20, 20), 4, Random.Range(-20, 20));
+    }
+
+    public static void SetRenderLayerInChildren(Transform transform, int layerNumber)
+    {
+        foreach (Transform trans in transform.GetComponentInChildren<Transform>())
+        {
+            if (trans.CompareTag("IgnoreLayerChange"))
+                continue;
+                
+            trans.gameObject.layer = layerNumber;
+        }
+    }
+}
